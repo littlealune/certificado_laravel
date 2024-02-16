@@ -1,5 +1,12 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<x-layouts.layout>
+
+    <div class="h-full flex justify-center items-center  ">
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')"/>
+
+
+    <form method="POST" action="{{ route('register') }}"class="w-1/3 bg-white p-5
+         border-blue-500 border-2 rounded-3xl">
         @csrf
 
         <!-- Name -->
