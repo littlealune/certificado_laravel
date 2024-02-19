@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view("main", "main");
+//Route::get("main", function(){
+//    return view ("main");
+//});
+//Route::get("main", fn()=>view ("main"));
+//Route::get("main", [MainController::class=>"index"]);
+
+
 Route::view("about", "about");
 
 
