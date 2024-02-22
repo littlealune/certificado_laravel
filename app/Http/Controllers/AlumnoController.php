@@ -55,6 +55,7 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
+        return view("alumnos.editar",["alumno"=>$alumno]);
         //
     }
 
@@ -63,7 +64,11 @@ class AlumnoController extends Controller
      */
     public function update(UpdateAlumnoRequest $request, Alumno $alumno)
     {
-        //
+        $valores =  $request->input();
+        $alumno->update($valores);
+        $alumnos = Alumno::all();
+        return view ("alumnos.listado",["alumnos"=>$alumnos]);
+
     }
 
     /**
