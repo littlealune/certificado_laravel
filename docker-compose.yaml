@@ -3,7 +3,7 @@ services:
   mysql:
     image: mysql
     volumes:
-      - ./datos:/var/lib/mysql
+      - .\datos:/var/lib/mysql
     ports:
       - ${DB_PORT}:3306
     environment:
