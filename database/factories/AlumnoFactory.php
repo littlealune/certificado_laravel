@@ -20,7 +20,7 @@ class AlumnoFactory extends Factory
             'nombre' => fake()->name(),
             'apellidos' => fake()->lastName(),
             'direccion' => fake()->address(),
-            'email' => fake()->email(),
+            'email' => fake()->safeEmail(),
             'telefono' => fake()->phoneNumber()
             //
         ];

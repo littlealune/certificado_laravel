@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\ProfesorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::view("main", "main");
 Route::view("about", "about");
 
 Route::resource("alumnos", AlumnoController::class);
+
+Route::resource("profesores", ProfesorController::class);
 
 
 

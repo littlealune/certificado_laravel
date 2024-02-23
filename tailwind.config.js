@@ -20,13 +20,39 @@ export default {
                 "15v": "15vh",
             },
             colors: {
-                "header": "#750D37",
+                "header": "#162b3b",
                 "footer": "#a39da0",
-                "main": "#E5FCF5",
-                "nav": "#B3DEC1",
+                "main": "#244761",
+                "nav": "#1f3b54",
             }
 
         },
+    },
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+
+                    "primary": "#00b0de",
+
+                    "secondary": "#a99700",
+
+                    "accent": "#d61d00",
+
+                    "neutral": "#162b3b",
+
+                    "base-100": "#202f42",
+
+                    "info": "#00f1ff",
+
+                    "success": "#83f536",
+
+                    "warning": "#eb5800",
+
+                    "error": "#ff0044",
+                },
+            },
+        ],
     },
 
     plugins: [forms,require("daisyui")],

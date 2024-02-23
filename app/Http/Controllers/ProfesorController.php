@@ -13,7 +13,9 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        //
+        $profesores = Profesor::all();
+
+        return view("profesores.listado",["profesores"=> $profesores]);
     }
 
     /**
@@ -21,7 +23,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        //
+        return view ("profesores.create");
     }
 
     /**
@@ -29,7 +31,11 @@ class ProfesorController extends Controller
      */
     public function store(StoreProfesorRequest $request)
     {
-        //
+        $valores =  $request->input();
+        $profesor = new Profesor($valores);
+        $profesor->save();
+        $profesores = Profesor::all();
+        return view ("profesores.listado",["profesores"=>$profesores]);
     }
 
     /**
@@ -45,7 +51,7 @@ class ProfesorController extends Controller
      */
     public function edit(Profesor $profesor)
     {
-        //
+        return view("profesores.editar",["profesor"=>$profesor]);
     }
 
     /**
@@ -53,7 +59,10 @@ class ProfesorController extends Controller
      */
     public function update(UpdateProfesorRequest $request, Profesor $profesor)
     {
-        //
+        $valores =  $request->input();
+        $profesor->update($valores);
+        $profesores = Profesor::all();
+        return view ("profesores.listado",["profesores"=>$profesores]);
     }
 
     /**
@@ -61,6 +70,8 @@ class ProfesorController extends Controller
      */
     public function destroy(Profesor $profesor)
     {
-        //
+        $profesor->delete();
+        $profesores = Profesor::all();
+        return view ("profesores.listado",["profesores"=>$profesores]);
     }
 }

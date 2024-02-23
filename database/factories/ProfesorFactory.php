@@ -17,7 +17,10 @@ class ProfesorFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => fake()->name(),
+            'apellidos' => fake()->lastName(),
+            'email' => fake()->safeEmail(),
+            'departamento' => $this->faker->randomElement(['Imagen y Sonido','Informática','Marketing y Logística'])
         ];
     }
 }

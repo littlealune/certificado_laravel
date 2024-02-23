@@ -1,27 +1,23 @@
 <x-layouts.layout>
     <div class="overflow-x-auto max-h-full">
 
-
-
         <table class="table table-xs table-pin-rows">
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
+                <th>Departamento</th>
                 <th>Email</th>
-                <th colspan="2"><a href="/alumnos/create" class="btn btn-success w-full text-3xl text-green-700"> ADD </a></th>
+                <th colspan="2"><a href="/profesores/create" class="btn btn-success w-full text-3xl text-green-700"> ADD </a></th>
             </tr>
 
-            @foreach($alumnos as $alumno)
+            @foreach($profesores as $profesor)
                 <tr>
-                    <td>{{$alumno->nombre}}</td>
-                    <td>{{$alumno->apellidos}}</td>
-                    <td>{{$alumno->direccion}}</td>
-                    <td>{{$alumno->telefono}}</td>
-                    <td>{{$alumno->email}}</td>
+                    <td>{{$profesor->nombre}}</td>
+                    <td>{{$profesor->apellidos}}</td>
+                    <td>{{$profesor->departamento}}</td>
+                    <td>{{$profesor->email}}</td>
                     <td>
-                        <form action="/alumnos/{{$alumno->id}}" method="POST">
+                        <form action="/alumnos/{{$profesor->id}}" method="POST">
                             @csrf
                             @method("DELETE")
                             <button class="btn btn-error" type="submit">
@@ -34,7 +30,7 @@
                         </form>
                     </td>
                     <td>
-                        <a class="btn btn-info" href="/alumnos/edit">
+                        <a class="btn btn-info" href="/profesores/edit">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6 text-blue-600">
                                 <path stroke-linecap="round" stroke-linejoin="round"
