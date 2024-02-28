@@ -23,4 +23,9 @@ class ProfesorFactory extends Factory
             'departamento' => $this->faker->randomElement(['Imagen y Sonido','Informática','Marketing y Logística'])
         ];
     }
+    private function getDni(): string {
+        $letras= "TRWAGMYFPDXBNJZSQVHLCKE";
+        $numero = fake()->randomNumber(8);
+        return $numero.($letras.charAt($numero/23));
+    }
 }

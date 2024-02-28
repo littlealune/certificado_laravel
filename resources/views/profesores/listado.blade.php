@@ -1,5 +1,36 @@
 <x-layouts.layout>
+    @vite(['.\resources\js\app.js'])
     <div class="overflow-x-auto max-h-full">
+
+        <!-- @if(session('session'))
+            <h1 class="alert alert-success z-20 flex position-relative" id="alertSession">&#10003; {{session('session')}}</h1>
+            <script>
+                    const target = document.getElementById('alertSession')
+                    window.onload=() => setTimeout(() => target.style.display('none') , 3000)
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    const target = document.getElementById('alertSession');
+
+                    // Opacidad 1 = 100%
+                    target.style.opacity = 1;
+
+                    // Después de 3 segundos, vamos bajando opacidad
+                    setTimeout(function() {
+                        let opacity = 1;
+                        const interval = setInterval(function() {
+                            opacity -= 0.01; // Bajamos en 1% cada vez
+                            target.style.opacity = opacity;
+
+                            // Para opacidad 0
+                            if (opacity <= 0) {
+                                target.style.display = 'none';
+                                clearInterval(interval);
+                            }
+                        }, 15); // 15ms de delay cada 1%
+                    }, 3000); // 3000ms (3s) de delay antes de ejecución
+                });
+            </script>
+        @endif -->
 
         <table class="table table-xs table-pin-rows">
             <tr>
@@ -17,10 +48,11 @@
                     <td>{{$profesor->departamento}}</td>
                     <td>{{$profesor->email}}</td>
                     <td>
-                        <form action="/alumnos/{{$profesor->id}}" method="POST">
+                        <form action="/profesores/{{$profesor->id}}" method="POST" id="botones">
+                            <h1 style="display: none" id="idSeleccionado">{{$profesor->nombre}} {{$profesor->apellidos}}</h1>
                             @csrf
                             @method("DELETE")
-                            <button class="btn btn-error" type="submit">
+                            <button class="btn btn-error" type="button" id="botonBorrar" data-id="{{$profesor->nombre}} {{$profesor->apellidos}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-200">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -45,5 +77,4 @@
 
         </table>
     </div>
-
 </x-layouts.layout>

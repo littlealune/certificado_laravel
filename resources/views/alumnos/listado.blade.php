@@ -1,7 +1,6 @@
 <x-layouts.layout>
     <div class="overflow-x-auto max-h-full">
-
-
+        @vite(['.\resources\js\app.js'])
 
         <table class="table table-xs table-pin-rows">
             <tr>
@@ -21,10 +20,11 @@
                     <td>{{$alumno->telefono}}</td>
                     <td>{{$alumno->email}}</td>
                     <td>
-                        <form action="/alumnos/{{$alumno->id}}" method="POST">
+                        <form action="/alumnos/{{$alumno->id}}" method="POST" id="botones">
+                            <h1 style="display: none" id="idSeleccionado">{{$alumno->nombre}} {{$alumno->apellidos}}</h1>
                             @csrf
                             @method("DELETE")
-                            <button class="btn btn-error" type="submit">
+                            <button class="btn btn-error" type="button" id="botonBorrar">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-200">
                                     <path stroke-linecap="round" stroke-linejoin="round"

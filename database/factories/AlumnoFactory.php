@@ -25,4 +25,5 @@ class AlumnoFactory extends Factory
             //
         ];
     }
+
 }

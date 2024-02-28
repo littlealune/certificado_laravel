@@ -29,8 +29,13 @@
                 <div class="sm:col-span-full">
                     <label for="departamento" class="block text-sm font-medium leading-6">Departamento</label>
                     <div class="mt-2">
-                        <input type="text" name="departamento" id="departamento"
-                               class="w-full input input-accent">
+                        <select name="departamento" id="departamento"
+                               class="w-full select select-accent">
+                            <option>Seleccione un departamento</option>
+                            <option>Marketing y Logística</option>
+                            <option>Informática</option>
+                            <option>Imagen y Sonido</option>
+                        </select>
                     </div>
                 </div>
                 <a type="button" class="text-sm font-semibold leading-6" href="/profesores">Volver al Listado</a>

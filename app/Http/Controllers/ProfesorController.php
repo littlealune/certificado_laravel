@@ -35,6 +35,7 @@ class ProfesorController extends Controller
         $profesor = new Profesor($valores);
         $profesor->save();
         $profesores = Profesor::all();
+        session()->flash('session',"Profesor creado correctamente");
         return view ("profesores.listado",["profesores"=>$profesores]);
     }
 
@@ -72,6 +73,7 @@ class ProfesorController extends Controller
     {
         $profesor->delete();
         $profesores = Profesor::all();
+        session()->flash('session',"Profesor eliminado correctamente");
         return view ("profesores.listado",["profesores"=>$profesores]);
     }
 }

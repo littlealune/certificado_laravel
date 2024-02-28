@@ -19,4 +19,5 @@ class AlumnoSeeder extends Seeder
 
         //
     }
+
 }

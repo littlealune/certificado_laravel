@@ -4,8 +4,8 @@
     <h1 class="text-white uppercase text-6xl">Gestión Laravel</h1>
     @guest
         <div class="space-x-4">
-            <a href="login" class = "text-white btn glass">Login</a>
-            <a  href ="register" class = "btn glass text-white">Register</a>
+            <a href="http://localhost:8000/login" class = "text-white btn glass">Login</a>
+            <a href ="http://localhost:8000/register" class = "btn glass text-white">Register</a>
         </div>
     @endguest
     @auth
@@ -15,9 +15,7 @@
                 @csrf
                 <button class=" btn glass text-white" type="submit">Logout</button>
             </form>
-
         </div>
-
     @endauth
 
 
