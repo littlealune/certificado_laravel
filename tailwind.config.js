@@ -19,19 +19,13 @@ export default {
                 "65v": "65vh",
                 "15v": "15vh",
             },
-            colors: {
-                "header": "#162b3b",
-                "footer": "#a39da0",
-                "main": "#244761",
-                "nav": "#1f3b54",
-            }
 
         },
     },
     daisyui: {
         themes: [
             {
-                mytheme: {
+                dayMode: {
 
                     "primary": "#00b0de",
 
@@ -39,9 +33,9 @@ export default {
 
                     "accent": "#d61d00",
 
-                    "neutral": "#162b3b",
+                    "neutral": "#e6e6e6",
 
-                    "base-100": "#202f42",
+                    "base-100": "#d4d3d3",
 
                     "info": "#00f1ff",
 
@@ -49,8 +43,34 @@ export default {
 
                     "warning": "#eb5800",
 
-                    "error": "#ff0044",
+                    "error": "#f89",
+
+                    "base-300": "#fff",
+
                 },
+            },
+            {
+                darkMode : {
+                    "primary": "#ff0092",
+
+                    "secondary": "#0073ff",
+
+                    "accent": "#977b00",
+
+                    "neutral": "#121d30",
+
+                    "base-100": "#2c2a30",
+
+                    "info": "#4ad7ff",
+
+                    "success": "#a9e930",
+
+                    "warning": "#ffbe00",
+
+                    "error": "#ff5274",
+
+                    "base-300":"#35333a",
+                }
             },
         ],
     },

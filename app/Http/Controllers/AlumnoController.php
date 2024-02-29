@@ -18,7 +18,6 @@ class AlumnoController extends Controller
          return view("alumnos.listado",["alumnos"=> $alumnos]);
 
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -64,10 +63,21 @@ class AlumnoController extends Controller
      */
     public function update(UpdateAlumnoRequest $request, Alumno $alumno)
     {
+
+        $page = Request::get("page");
+
+
+
         $valores =  $request->input();
+
+
+
         $alumno->update($valores);
-        $alumnos = Alumno::all();
-        return view ("alumnos.listado",["alumnos"=>$alumnos]);
+
+
+        $alumnos = Alumno::paginate(10);
+
+        return view ("alumnos.listado",["alumnos"=>$alumnos, "page"=>$page]);
 
     }
 
@@ -84,4 +94,14 @@ class AlumnoController extends Controller
 
 
     }
+
+    /*
+        let elements = document.querySelectorAll('.options');
+        elements.forEach((element) => {
+            element.addEventListener('click', accionAEjecutar())
+        //lo que falte
+        }
+    */
 }
+
+

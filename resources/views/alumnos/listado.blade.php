@@ -1,5 +1,5 @@
 <x-layouts.layout>
-    <div class="overflow-x-auto max-h-full">
+    <div class="overflow-x-auto max-h-full bg-base-300">
         @vite(['.\resources\js\app.js'])
 
         <table class="table table-xs table-pin-rows">

@@ -13,7 +13,7 @@
 <x-header/>
 <x-nav/>
 
-<main class="h-65v bg-main ">
+<main class="h-65v bg-base-300 ">
    {{$slot}}
 </main>
 <x-footer/>

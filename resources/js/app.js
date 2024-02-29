@@ -83,4 +83,6 @@ document.querySelectorAll('#botonBorrar').forEach(
                     {formulario.submit()})
                 }
             })
-        }))
+        }
+    )
+)

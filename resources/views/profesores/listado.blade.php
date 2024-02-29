@@ -1,6 +1,6 @@
 <x-layouts.layout>
     @vite(['.\resources\js\app.js'])
-    <div class="overflow-x-auto max-h-full">
+    <div class="overflow-x-auto max-h-full bg-base-300">
 
         <!-- @if(session('session'))
             <h1 class="alert alert-success z-20 flex position-relative" id="alertSession">&#10003; {{session('session')}}</h1>
@@ -32,7 +32,7 @@
             </script>
         @endif -->
 
-        <table class="table table-xs table-pin-rows">
+        <table class="table table-xs table-pin-rows bg-base-300">
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
