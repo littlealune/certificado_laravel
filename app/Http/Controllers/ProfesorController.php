@@ -52,7 +52,7 @@ class ProfesorController extends Controller
      */
     public function edit(Profesor $profesor)
     {
-        return view("profesores.editar",["profesor"=>$profesor]);
+        return view("profesores.edit",["profesor"=>$profesor]);
     }
 
     /**
@@ -63,6 +63,7 @@ class ProfesorController extends Controller
         $valores =  $request->input();
         $profesor->update($valores);
         $profesores = Profesor::all();
+        session()->flash();
         return view ("profesores.listado",["profesores"=>$profesores]);
     }
 

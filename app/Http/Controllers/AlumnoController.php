@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAlumnoRequest;
 use App\Http\Requests\UpdateAlumnoRequest;
 use App\Models\Alumno;
+use Illuminate\Support\Facades\Request;
 
 class AlumnoController extends Controller
 {
@@ -13,9 +14,13 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-         $alumnos = Alumno::paginate(10);
+        $alumnos = Alumno::paginate(10);
+        $page = Request::get('page') ?? 1;
 
-         return view("alumnos.listado",["alumnos"=> $alumnos]);
+//         return view("alumnos.listado",["alumnos"=> $alumnos, "page"=>$page]);
+
+        return view("alumnos.listado",compact("alumnos", "page"));
+
 
     }
     /**
@@ -54,8 +59,10 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        return view("alumnos.editar",["alumno"=>$alumno]);
-        //
+        $page = Request::get("page");
+
+        return view("alumnos.edit",["alumno"=>$alumno,"page"=>$page]);
+
     }
 
     /**
@@ -66,18 +73,11 @@ class AlumnoController extends Controller
 
         $page = Request::get("page");
 
-
-
         $valores =  $request->input();
-
-
 
         $alumno->update($valores);
 
-
-        $alumnos = Alumno::paginate(10);
-
-        return view ("alumnos.listado",["alumnos"=>$alumnos, "page"=>$page]);
+        return response()->redirectTo(route("alumnos.index",["page"=>$page]));
 
     }
 
@@ -87,11 +87,8 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         $alumno->delete();
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::paginate(10);
         return view ("alumnos.listado",["alumnos"=>$alumnos]);
-
-
-
 
     }
 
