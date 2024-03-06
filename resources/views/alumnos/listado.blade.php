@@ -13,7 +13,7 @@
             </tr>
 
             @foreach($alumnos as $alumno)
-                <tr>
+                <tr onclick='openModal("ventanaModal{{$alumno->id}}")' class="hover:bg-base-100 hover:cursor-pointer">
                     <td>{{$alumno->nombre}}</td>
                     <td>{{$alumno->apellidos}}</td>
                     <td>{{$alumno->direccion}}</td>
@@ -45,9 +45,27 @@
 
 
                 </tr>
+                <dialog id="ventanaModal{{$alumno->id}}" class="modal">
+                    <div class="modal-box">
+                        <form method="dialog">
+                            <!--  if there is a button in form, it will close the modal -->
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <h3 class="font-bold text-lg">Hello!</h3>
+                        <p class="py-4">Press ESC key or click on ✕ button to close</p>
+                    </div>
+                </dialog>
             @endforeach
 
         </table>
     </div>
+    <script>
+        function editar_alumno(id){
+            window.location=`http://localhost:8000/alumnos/${id}`
+        }
+        function openModal(ventanaModal){
+            document.getElementById(ventanaModal).showModal()
+        }
+    </script>
 
 </x-layouts.layout>
