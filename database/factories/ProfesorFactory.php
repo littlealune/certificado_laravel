@@ -18,6 +18,7 @@ class ProfesorFactory extends Factory
     {
         return [
             'nombre' => fake()->name(),
+            'dni' => $this->getDni(),
             'apellidos' => fake()->lastName(),
             'email' => fake()->safeEmail(),
             'departamento' => $this->faker->randomElement(['Imagen y Sonido','Informática','Marketing y Logística'])

@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Idioma extends Model
 {
     use HasFactory;
-    protected $fillable = ['alumno_id','idioma'];
+    protected $fillable = ['idioma'];
+
+    public function alumno(){
+        return $this->belongsTo(Alumno::class);
+    }
 }

@@ -52,7 +52,7 @@
                             <h1 style="display: none" id="idSeleccionado">{{$profesor->nombre}} {{$profesor->apellidos}}</h1>
                             @csrf
                             @method("DELETE")
-                            <button class="btn btn-error" type="button" id="botonBorrar" data-id="{{$profesor->nombre}} {{$profesor->apellidos}}">
+                            <button class="btn btn-error" type="button" id="botonBorrar" data-id="{{$profesor->nombre}} {{$profesor->apellidos}}" onClick="confirmDelete(event,this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-200">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -62,7 +62,7 @@
                         </form>
                     </td>
                     <td>
-                        <a class="btn btn-info" href="/profesores/edit">
+                        <a class="btn btn-info" href="{{route("$profesores.edit", $profesor->id)}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6 text-blue-600">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -77,4 +77,27 @@
 
         </table>
     </div>
+    <script>
+        import Swal from "sweetalert2";
+
+        function confirmDelete(event, button) {
+            event.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, borrarlo!'
+            }).then((result) => {
+                    console.log("Resultado "+result);
+                    if (result.isConfirmed)
+                        button.closest('form').submit();
+                }
+
+            )
+
+        }
+    </script>
 </x-layouts.layout>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profesor;
 use App\Http\Requests\StoreProfesorRequest;
 use App\Http\Requests\UpdateProfesorRequest;
+use App\Models\Profesor;
 
 class ProfesorController extends Controller
 {
@@ -15,7 +15,9 @@ class ProfesorController extends Controller
     {
         $profesores = Profesor::all();
 
-        return view("profesores.listado",["profesores"=> $profesores]);
+
+        return view ("profesores.listado",["profesores"=>$profesores]);
+        //
     }
 
     /**
@@ -24,6 +26,7 @@ class ProfesorController extends Controller
     public function create()
     {
         return view ("profesores.create");
+        //
     }
 
     /**
@@ -31,11 +34,12 @@ class ProfesorController extends Controller
      */
     public function store(StoreProfesorRequest $request)
     {
-        $valores =  $request->input();
+        $valores = $request->input();
         $profesor = new Profesor($valores);
         $profesor->save();
+        session()->flash("status", "Se ha creado el profesor $profesor->nombre");
+
         $profesores = Profesor::all();
-        session()->flash('session',"Profesor creado correctamente");
         return view ("profesores.listado",["profesores"=>$profesores]);
     }
 
@@ -52,7 +56,11 @@ class ProfesorController extends Controller
      */
     public function edit(Profesor $profesor)
     {
-        return view("profesores.edit",["profesor"=>$profesor]);
+
+//        $profesor= Profesor::find($id);
+
+        return view ("profesores.edit", ['profesor'=>$profesor]);
+        //
     }
 
     /**
@@ -60,21 +68,21 @@ class ProfesorController extends Controller
      */
     public function update(UpdateProfesorRequest $request, Profesor $profesor)
     {
-        $valores =  $request->input();
-        $profesor->update($valores);
-        $profesores = Profesor::all();
-        session()->flash();
-        return view ("profesores.listado",["profesores"=>$profesores]);
+        session()->flash("status", "Se ha actualizado El profesor  $profesor->nombre");
+
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Profesor $profesor)
+    public function destroy(int $id)
     {
+        $profesor =Profesor::find($id);
         $profesor->delete();
         $profesores = Profesor::all();
-        session()->flash('session',"Profesor eliminado correctamente");
+        session()->flash("status", "Se ha borrado El profesor  $profesor->nombre");
         return view ("profesores.listado",["profesores"=>$profesores]);
+        //
     }
 }

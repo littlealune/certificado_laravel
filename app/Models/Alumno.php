@@ -9,4 +9,8 @@ class Alumno extends Model
 {
     use HasFactory;
     protected $fillable =["nombre", "direccion", "apellidos", "email", "telefono"];
+
+    public function idiomas(){
+        return $this->hasMany(Idioma::class);
+    }
 }

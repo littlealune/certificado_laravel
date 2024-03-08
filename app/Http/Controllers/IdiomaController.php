@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Idioma;
 use App\Http\Requests\StoreIdiomaRequest;
 use App\Http\Requests\UpdateIdiomaRequest;
+use App\Models\Idioma;
 
 class IdiomaController extends Controller
 {

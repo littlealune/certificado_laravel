@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Idioma;
 use Illuminate\Database\Seeder;
 use App\Models\Alumno;
@@ -13,10 +14,10 @@ class AlumnoSeeder extends Seeder
      */
     private function get_idiomas(): array
     {
-        $idiomas = ["Francés", "Inglés", "Alemán", "Ruso", "Rumano", "Portugués",
-            "Catalán", "Gallego", "Fabla", "Vasco", "Italiano", "Chino"];
+        $idiomas = config("idiomas.listado_idiomas");
+
         $idiomas_hablados = [];
-        $numero_idiomas = rand(1, 3);
+        $numero_idiomas = rand(0, 4);
         if ($numero_idiomas == 0)
             return [];
         $posiciones_idiomas = array_rand($idiomas, $numero_idiomas);

@@ -21,8 +21,8 @@ class AlumnoController extends Controller
 
         return view("alumnos.listado",compact("alumnos", "page"));
 
-
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -51,6 +51,8 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
+
+        return view("alumnos.show", compact('alumno'));
         //
     }
 
@@ -61,7 +63,8 @@ class AlumnoController extends Controller
     {
         $page = Request::get("page");
 
-        return view("alumnos.edit",["alumno"=>$alumno,"page"=>$page]);
+        return view ("alumnos.editar", ["alumno"=>$alumno,"page"=>$page, "idiomas"=>$idiomas]);
+
 
     }
 
@@ -73,12 +76,25 @@ class AlumnoController extends Controller
 
         $page = Request::get("page");
 
-        $valores =  $request->input();
+
+        $valores = $request->input(); //Leo los valores del formulario
+
 
         $alumno->update($valores);
 
-        return response()->redirectTo(route("alumnos.index",["page"=>$page]));
+        //Opciones alternativas para retornar
+//        return redirect(route("alumnos.index", ["page"=>$page]));
+//        return redirect(route("alumnos.index", compact("page")));
+//        return redirect("/alumnos?page=$page");
 
+
+        return response()->redirectTo(route("alumnos.index",["page"=>$page]));
+//        header ("Location:http://localhost:8000/alumnos?page=$page");
+
+
+//        return view ("alumnos.listado",["alumnos"=>$alumnos,"page"=>$page]);
+
+        //
     }
 
     /**
@@ -91,14 +107,4 @@ class AlumnoController extends Controller
         return view ("alumnos.listado",["alumnos"=>$alumnos]);
 
     }
-
-    /*
-        let elements = document.querySelectorAll('.options');
-        elements.forEach((element) => {
-            element.addEventListener('click', accionAEjecutar())
-        //lo que falte
-        }
-    */
 }
-
-

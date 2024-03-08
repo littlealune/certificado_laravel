@@ -6,19 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vitereactrefresh
-    @vite("resources/css/app.css")
+    @vite (["resouces/js/app.jsx", "resources/css/app.css"])
 </head>
 <body>
+<div id="codereact"></div>
 
-<x-header/>
-<x-nav/>
-
-<main class="h-65v bg-base-300 ">
-   {{$slot}}
-</main>
-<x-footer/>
 </body>
 </html>
-

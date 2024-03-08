@@ -22,7 +22,10 @@ class StoreProfesorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "email"=>"unique:profesores"
+            "nombre"=>"required|min:2",
+            "apellidos"=>"required|min:2",
+            "departamento"=>"required",
+            "email"=>"email|required|unique:profesores",
         ];
     }
 }

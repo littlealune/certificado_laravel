@@ -1,6 +1,6 @@
-## Creación de un CRUD
+# Creación de un CRUD
 
-### Creación en ecosistema
+## Creación en ecosistema
 
 ```bash
 php artisan make:model <nombre_del_modelo> --all
@@ -26,15 +26,25 @@ Por ello, debemos hacer cambios en el modelo:
     protected $table = "";
     ```
 2. Le atribuimos al valor $table el nombre que queremos darle a la tabla
-    ```php
+   ```php
    protected $table = "nombre_de_tabla";
    ```
 
 
-### Creo las rutas
+## Creación las rutas
 
+Para que nuestra página pueda llegar al CRUD que hemos creado, debemos establecer las rutas que queremos 
+que nuestra página siga para poder alcanzar nuestro objetivo. 
 
-### Definición de tablas
+En la carpeta Routes, existe un archivo llamado web.php, el cual contiene todas las rutas de nuestra página. En él,
+debemos escribir la ruta a nuestro CRUD. Además, el web.php también nos permite definir los recursos que
+queremos que la página utilice. Un ejemplo de recurso sería el siguiente:
+
+```php
+Route::resource("profesores", ProfesorController::class);
+```
+
+## Definición de tablas
 
 A la hora de definir las tablas, es importante asegurarse de que todas las columnas tienen definido un tipo de valor y un nombre de columna. 
 Para ello, hacemos empleo de la función up() de las migraciones. Dentro de esta misma, se nos tiene que haber creado una línea de código similar
@@ -57,7 +67,7 @@ Schema::create('profesores', function (Blueprint $table) {
 });
 ```
 
-### Migración de tabla
+## Migración de tabla
 
 Para crear y llenar las tablas, debemos recurrir a las migraciones.
 
