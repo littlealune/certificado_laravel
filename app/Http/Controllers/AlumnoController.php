@@ -19,7 +19,7 @@ class AlumnoController extends Controller
 
 //         return view("alumnos.listado",["alumnos"=> $alumnos, "page"=>$page]);
 
-        return view("alumnos.listado",compact("alumnos", "page"));
+        return view("alumnos.listado", compact("alumnos", "page"));
 
     }
 
@@ -28,7 +28,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        return view ("alumnos.create");
+        return view("alumnos.create");
         //
     }
 
@@ -37,11 +37,11 @@ class AlumnoController extends Controller
      */
     public function store(StoreAlumnoRequest $request)
     {
-        $valores =  $request->input();
+        $valores = $request->input();
         $alumno = new Alumno($valores);
         $alumno->save();
         $alumnos = Alumno::all();
-        return view ("alumnos.listado",["alumnos"=>$alumnos]);
+        return view("alumnos.listado", ["alumnos" => $alumnos]);
 
 
     }
@@ -88,7 +88,7 @@ class AlumnoController extends Controller
 //        return redirect("/alumnos?page=$page");
 
 
-        return response()->redirectTo(route("alumnos.index",["page"=>$page]));
+        return response()->redirectTo(route("alumnos.index", ["page" => $page]));
 //        header ("Location:http://localhost:8000/alumnos?page=$page");
 
 
@@ -104,7 +104,7 @@ class AlumnoController extends Controller
     {
         $alumno->delete();
         $alumnos = Alumno::paginate(10);
-        return view ("alumnos.listado",["alumnos"=>$alumnos]);
+        return view("alumnos.listado", ["alumnos" => $alumnos]);
 
     }
 }

@@ -30,9 +30,10 @@ Route::get("main", \App\Http\Controllers\MainController::class);
 
 Route::resource("alumnos", AlumnoController::class);
 
-Route::get("noticias/{id}", fn($numero)=>"<h1>Nocicioa numero $numero</h1>");
+Route::get("noticias/{id}", fn($numero)=>"<h1>Noticia numero $numero</h1>");
 
 Route::resource("profesores", ProfesorController::class);
+
 
 //Route::get("profesores",[ProfesorController::class, "index"]);
 //Route::get("profesores/create",[ProfesorController::class, "create"]);

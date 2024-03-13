@@ -27,6 +27,7 @@ class ProfesorFactory extends Factory
     private function getDni(): string {
         $letras= "TRWAGMYFPDXBNJZSQVHLCKE";
         $numero = fake()->randomNumber(8);
-        return $numero.(substr($letras, $numero/23,1));
+        $letra = substr($letras, $numero/23,1);
+        return $numero.$letra;
     }
 }

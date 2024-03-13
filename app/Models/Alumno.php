@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+
 
 class Alumno extends Model
 {
@@ -11,6 +13,7 @@ class Alumno extends Model
     protected $fillable =["nombre", "direccion", "apellidos", "email", "telefono"];
 
     public function idiomas(){
+
         return $this->hasMany(Idioma::class);
     }
 }

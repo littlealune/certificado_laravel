@@ -18,7 +18,9 @@ return new class extends Migration
                 ->references("id")
                 ->on("alumnos")
                 ->cascadeOnDelete();
-            //$table->foreignId("alumno_id")->constrained()->cascadeOnDelete();
+//            $table->foreignId("alumno_id")->constrained()
+//                ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

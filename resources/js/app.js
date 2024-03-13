@@ -67,6 +67,3 @@ document.querySelectorAll('#botonBorrar').forEach(
     )
 )
 
-function editar_alumno(id) {
-
-}

@@ -1,10 +1,10 @@
 <x-layouts.layout>
 
-    <form class="flex justify-center h-full items-center" method="post" action="/alumnos/{{$profesor->id}}" enctype="multipart/form-data">
+    <form class="flex justify-center h-full items-center" method="post" action="{{route("profesores.update",[$profesor->id])}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="bg-white p-5 rounded-2xl">
-            <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del alumno</h2>
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del profesor</h2>
             <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
                     <label for="nombre" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
@@ -21,25 +21,22 @@
                     </div>
                 </div>
 
-                <div class="sm:col-span-4">
+                <div class="sm:col-span-full">
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                     <div class="mt-2">
                         <input id="email" value="{{$profesor->email}}" name="email" type="email"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
-                <div class="sm:col-span-2">
-                    <label for="telefono" class="block text-sm font-medium leading-6 text-gray-900">Teléfono</label>
-                    <div class="mt-2">
-                        <input id="telefono" value="{{$profesor->telefono}}" name="telefono" type="text"
-                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
                 <div class="col-span-full">
-                    <label for="direccion" class="block text-sm font-medium leading-6 text-gray-900">Dirección</label>
+                    <label for="departamento" class="block text-sm font-medium leading-6 text-gray-900">Departamento</label>
                     <div class="mt-2">
-                        <input type="text" value="{{$profesor->direccion}}" name="direccion" id="direccion"
-                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <select  name="departamento" id="departamento"
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <option @if($profesor->departamento == 'Marketing y Logística') selected @endif>Marketing y Logística</option>
+                            <option @if($profesor->departamento == 'Informática') selected @endif>Informática</option>
+                            <option @if($profesor->departamento == 'Imagen y Sonido') selected @endif>Imagen y Sonido</option>
+                        </select>
                     </div>
                 </div>
                 <a type="button" class="text-sm font-semibold leading-6 text-gray-900" href="/profesores">Volver al Listado</a>

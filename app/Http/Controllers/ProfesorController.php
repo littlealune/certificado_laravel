@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProfesorRequest;
 use App\Http\Requests\UpdateProfesorRequest;
 use App\Models\Profesor;
+use Illuminate\Support\Facades\Request;
 
 class ProfesorController extends Controller
 {
@@ -59,7 +60,7 @@ class ProfesorController extends Controller
 
 //        $profesor= Profesor::find($id);
 
-        return view ("profesores.edit", ['profesor'=>$profesor]);
+        return view ("profesores.editar", ['profesor'=>$profesor]);
         //
     }
 
@@ -68,8 +69,13 @@ class ProfesorController extends Controller
      */
     public function update(UpdateProfesorRequest $request, Profesor $profesor)
     {
-        session()->flash("status", "Se ha actualizado El profesor  $profesor->nombre");
+        $valores = $request->input(); //Leo los valores del formulario
 
+
+        $profesor->update($valores);
+
+        session()->flash("status", "Se ha actualizado El profesor $profesor->nombre");
+        return response()->redirectTo(route("profesores.index"));
         //
     }
 

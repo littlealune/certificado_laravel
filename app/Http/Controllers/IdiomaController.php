@@ -13,7 +13,6 @@ class IdiomaController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
