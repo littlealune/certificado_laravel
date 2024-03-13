@@ -77,3 +77,7 @@ Retomando el ejemplo del apartado anterior
 ```bash
 php artisan migrate --seed
 ```
+Si en lugar de llenar la tabla queremos actualizar la estructura de las tablas, podemos usar el siguiente comando:
+```bash
+php artisan migrate:fresh
+```
